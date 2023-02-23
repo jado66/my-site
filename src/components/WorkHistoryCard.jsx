@@ -1,8 +1,9 @@
 const WorkHistoryCard = (props) =>{
     return(
-        <div className={"card col-lg-8 col-12 mx-lg-auto mx-2 "+props.className} >
+        <div className={"card col-lg-8 col-12 mx-lg-auto "+props.className} >
+
             {/* <img src="..." className="card-img-top" alt="..."> */}
-            <div className="card-body d-flex justify-content-between">
+            <div className="card-body d-flex flex-lg-row flex-column justify-content-between">
                 <h5 className="card-title"><a className="text-dark fw-bold" href = {props.workHref}>{props.company}</a> - {props.title}</h5>
                 <span>{props.dates}</span>
             </div>

@@ -13,6 +13,8 @@ const Resume = () =>{
             <Navbar/>
             {/* <UnderConstrunctionBanner/> */}
             <h1 className="text-center my-3 text-capitalize">{router.pathname.slice(1)}</h1>
+            
+            <div className="px-2">
             <WorkHistoryCard
                 company = "Sinch"
                 title = "Lead Front End Web Developer"
@@ -97,6 +99,9 @@ const Resume = () =>{
                 className = "mb-5"
                 skills = 'C++, C#, Unity Engine'
             />
+            </div>
+            
+            
             
         </div>
   )
