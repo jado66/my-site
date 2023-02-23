@@ -11,12 +11,12 @@ const WorkHistoryCard = (props) =>{
                 {
                     props.content.map((el,index)=>{
                         return(
-                            <li key={"li-"+el.slice(0,30)} className="list-group-item ps-5">- {el}</li>
+                            <li key={"li-"+el.slice(0,30)} className="list-group-item ps-lg-5 ps-2 text-lg-center text-start">- {el}</li>
                         )
                     })
                 }
             </ul>
-            <div className="card-body">
+            <div className="card-body text-lg-center text-start">
                 <span className="card-link">Technical Skills Used:</span>
                 <span className="card-link">{props.skills}</span>
             </div>

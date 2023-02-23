@@ -5,7 +5,7 @@ const ResumeCarousel = (props) =>{
     return(
     <div className="h-100">
             <h1 className="text-center text-capitalize py-4 text-dark">Resume</h1>
-            <div id="carouselExampleIndicators" className="carousel slide h-75 text-dark">
+            <div id="carouselExampleIndicators" className="carousel slide h-75 text-dark px-lg-0 px-5">
             <div className="carousel-indicators">
                 {
                     ResumeCards.map((el,index)=>{
@@ -18,7 +18,7 @@ const ResumeCarousel = (props) =>{
                 
                 
             </div>
-            <div className="carousel-inner text-dark">
+            <div className="carousel-inner text-dark fs-6">
                 {
                    ResumeCards.map((el,index)=>{
                     return(

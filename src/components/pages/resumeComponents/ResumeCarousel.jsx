@@ -10,7 +10,7 @@ const ResumeCards = [<WorkHistoryCard
                     'Lead the development of US based frontend web development team',
                     'Use localization to make site accessible to multiple languages',
                     'Allow customers to view and modify data using API calls to our database',
-                    'Create reusable styled components with dynamic properties'
+                    // 'Create reusable styled components with dynamic properties'
                 ]}
                 skills = 'React, Typescript, Material UI'
             />,
@@ -24,7 +24,7 @@ const ResumeCards = [<WorkHistoryCard
                     'Created custom Django applications for FBI to process internal legal data',
                     'Designed and implemented an easy-to-use accessible user interface using Bootstrap, custom CSS and JavaScript',
                     'Integrated custom middleware to authenticate automatically log in users in the application',
-                    'Created custom Django web services to send automated emails via a scheduled tasks',
+                    // 'Created custom Django web services to send automated emails via a scheduled tasks',
                     // `Utilized PyTest, Python Unittest, and Django's unit tests to create automated testing for all aspects of the application`,
                     // 'Created dozens of Python capabilities to processes and analyze data of many different file types',
                     // 'Participated in agile sprints using Jira, and used BitBucket and Git to manage different versions of the code'
@@ -40,8 +40,8 @@ const ResumeCards = [<WorkHistoryCard
                 content = {[
                     'Lead the development of a suite of quantum computing applications for designing new quantum computer chip schematics and developing, testing, and compiling quantum computing algorithms (i.e. a quantum computing IDE)',
                     'Designed and built a quantum code editor which was synchronized to a custom drag-and-drop quantum circuit creator',
-                    'Developed an Electron application using Node.js to manage and connect various tools in the suite',
-                    'Create intuitive front-end designs and styles using professional image editing software',
+                    // 'Developed an Electron application using Node.js to manage and connect various tools in the suite',
+                    // 'Create intuitive front-end designs and styles using professional image editing software',
                     // 'Mentored and directed a team of full-time software engineers and intern',
                 ]}
                 skills = 'Python, JS, Node.js, C++, Electron'
