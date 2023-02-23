@@ -2,8 +2,6 @@ import { useRouter } from "next/router"
 import { useContext } from "react"
 import { SiteContext } from "./_app"
 
-const { default: Navbar } = require("@/components/Navbar")
-
 const Construction = () =>{
 
     const router = useRouter()
@@ -12,6 +10,7 @@ const Construction = () =>{
 
     const enterSite = () =>{
         setUserEnters(true)
+        localStorage.setItem("entered",true)
         router.push('/')
     }
 

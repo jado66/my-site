@@ -1,4 +1,5 @@
 import { UnderConstrunctionBanner } from "@/components/Banner"
+import Footer from "@/components/Footer"
 import WorkHistoryCard from "@/components/WorkHistoryCard"
 import { useRouter } from "next/router"
 
@@ -96,13 +97,11 @@ const Resume = () =>{
                     'Developed a custom physics engine that handled gravitational forces, non-elastic collisions, and orbital mechanics',
                     'Implemented an artificial intelligence system and a simulated economy system',
                 ]}
-                className = "mb-5"
                 skills = 'C++, C#, Unity Engine'
             />
             </div>
             
-            
-            
+            <Footer/>
         </div>
   )
 }

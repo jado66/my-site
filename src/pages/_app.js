@@ -10,8 +10,10 @@ export default function App({ Component, pageProps }) {
   const [userEnters, setUserEnters] = useState(false)
 
   useEffect(()=>{
-
     require("bootstrap/dist/js/bootstrap.bundle.min.js");
+
+    
+
   },[])
   return (
     <SiteContext.Provider value =

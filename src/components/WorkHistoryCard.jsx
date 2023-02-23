@@ -11,7 +11,7 @@ const WorkHistoryCard = (props) =>{
                 {
                     props.content.map((el,index)=>{
                         return(
-                            <li key={"li-"+el.slice(0,10)} className="list-group-item ps-5">- {el}</li>
+                            <li key={"li-"+el.slice(0,30)} className="list-group-item ps-5">- {el}</li>
                         )
                     })
                 }
