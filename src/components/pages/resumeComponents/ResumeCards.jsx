@@ -3,10 +3,10 @@ import ResumeCards from "./ResumeCarousel"
 const ResumeCarousel = (props) =>{
         
     return(
-    <div className="h-100">
-            <h1 className="text-center text-capitalize py-4 text-dark">Resume</h1>
-            <div id="carouselExampleIndicators" className="carousel slide h-75 text-dark px-lg-0 px-5">
-            <div className="carousel-indicators">
+    <div className="h-100 col-lg-10 col-12 mx-auto pb-lg-5 pb-1">
+            <h1 className="text-center text-capitalize py-4 text-light">Resume</h1>
+            <div id="carouselExampleIndicators" className="carousel slide h-75 text-dark px-lg-0 px-lg-5 px-3 pb-lg-5 pb-1">
+            <div className="carousel-indicators pb-lg-5">
                 {
                     ResumeCards.map((el,index)=>{
                         return(
@@ -18,11 +18,11 @@ const ResumeCarousel = (props) =>{
                 
                 
             </div>
-            <div className="carousel-inner text-dark fs-6">
+            <div className="carousel-inner h-100 d-flex align-items-center text-dark fs-6">
                 {
                    ResumeCards.map((el,index)=>{
                     return(
-                        <div key = {"resume+"+index} className={"carousel-item "+(index===0?"active":"")}>
+                        <div key = {"resume+"+index} className={"carousel-item fs-6 "+(index===0?"active":"")}>
                             {el}
                         </div>
                     )
@@ -30,11 +30,11 @@ const ResumeCarousel = (props) =>{
                 }
                 
             </div>
-            <button className="carousel-control-prev " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button className="carousel-control-prev pe-lg-0 pe-5 pb-lg-5" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
             </button>
-            <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button className="carousel-control-next ps-lg-0 ps-5 pb-lg-5" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
             </button>
