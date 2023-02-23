@@ -1,6 +1,11 @@
 import {List} from 'react-bootstrap-icons'
 import Link from "next/link"
+import HoverLink from './HoverLink'
+import { useRouter } from 'next/router'
 const Navbar = () =>{
+
+    const router = useRouter()
+
     return(
         <nav className="navbar navbar-expand-lg bg-dark">
         <div className="container-fluid justify-content-center">
@@ -9,9 +14,33 @@ const Navbar = () =>{
             </button>
             <div className="collapse navbar-collapse " id="navbarTogglerDemo01">
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0 border-lg-0 border-warning mt-lg-0 mt-3">
-                    <li className='nav-item text-center '><Link href="/" className="nav-link px-2 text-light fw-bold">J-Apps</Link ></li>
-                    <li className='nav-item text-center'><Link href="/resume" className="nav-link px-2 text-light">Resume</Link ></li>
-                    <li className='nav-item text-center'><Link href="/contact" className="nav-link px-2 text-light">Contact</Link></li>
+                    <li className='nav-item text-center'>
+                        <HoverLink 
+                            href="/" 
+                            className="nav-link px-2 text-light fw-bold"
+                        >
+                            J-Apps
+                        </HoverLink >
+                    </li>
+                   
+                    <li className='nav-item text-center'>
+                        <HoverLink 
+                            href="/resume" 
+                            className="nav-link px-2 text-light"
+                            active = {router.pathname === "/resume"}
+                        >
+                            Resume
+                        </HoverLink>
+                    </li>
+                    <li className='nav-item text-center'>
+                        <HoverLink 
+                            href="/contact"
+                            className="nav-link px-2 text-light"
+                            active = {router.pathname === "/contact"}
+                        >
+                            Contact
+                        </HoverLink>
+                    </li>
                     
                     {/* <li> className=" me-auto ">
                         <Link href="/demos" className="btn btn-outline-light me-2 mb-lg-0 mb-2">Demos</Link>
@@ -20,10 +49,10 @@ const Navbar = () =>{
                 </ul>
                 <div className="d-flex flex-lg-row flex-column" >
                     <div className='text-center ms-lg-0 ms-3' >
-                        <Link href="/demos" style={{width:"7em"}} className="btn btn-outline-light me-lg-2 mb-lg-0 mb-2  text-center">Demos</Link>
+                        <Link href="/demos" style={{width:"7em"}} className="btn btn-outline-light me-lg-2 mb-lg-0 mb-2 text-center">Demos</Link>
                     </div>
                     <div className='text-center ms-lg-0 ms-3'>
-                        <Link href="/contact" style={{width:"7em"}} className="btn btn-warning text-center">Get Started</Link>
+                        <Link href="/contact" style={{width:"7em"}} className="btn btn-outline-warning text-center">Get Started</Link>
                     </div>
                 </div>
             </div>

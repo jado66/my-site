@@ -1,8 +1,9 @@
 import { useRouter } from "next/router"
 import { UnderConstrunctionBanner } from "@/components/Banner"
 import Footer from "@/components/Footer"
+import ContactContent from "@/components/pages/ContactContent"
+import Navbar from "@/components/Navbar"
 
-const { default: Navbar } = require("@/components/Navbar")
 
 const Contact = () =>{
 
@@ -11,9 +12,10 @@ const Contact = () =>{
   return (
         <div className="d-flex w-100 flex-column">
             <Navbar/>
-            <UnderConstrunctionBanner/>
-            <h1 className="text-center mt-3 text-capitalize">{router.pathname.slice(1)}</h1>
+            <ContactContent/>
             <Footer/>
+            <UnderConstrunctionBanner/>
+
 
         </div>
   )
