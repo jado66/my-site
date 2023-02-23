@@ -68,7 +68,7 @@ const Page = () =>{
 
       <div className="mb-5" style={{minHeight:"100vh"}} ref={demoRef}>
         <DemosContent/>
-        <button onClick={scrollToResumeRef} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">Learn more</button>
+        <button onClick={scrollToResumeRef} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">What Is Next</button>
 
       </div>
       <div className="mb-5 bg-secondary" ref = {resumeRef} style={{minHeight:"100vh"}}>
