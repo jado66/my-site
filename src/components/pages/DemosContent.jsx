@@ -14,9 +14,9 @@ const DemosContent = (props) =>{
 
             <Link 
                 className="btn btn-warning col-lg-6 col-12 mx-lg-auto border py-4 d-flex rounded-4 border-dark text-decoration-none mb-3" 
-                href='https://cabinets-southwest.vercel.app/'
+                href='https://cabinetssouthwest.com/'
             >
-                <span className="text-center fs-3 flex-grow-1 fw-bold text-dark">SPA - Small Business Example</span>
+                <span className="text-center fs-3 flex-grow-1 fw-bold text-dark">Single Page Website</span>
             </Link>
 
             <Link 

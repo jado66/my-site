@@ -10,7 +10,18 @@ const ResumeCarousel = (props) =>{
                 {
                     ResumeCards.map((el,index)=>{
                         return(
-                            <button key = {"carouselExampleIndicators"+index} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={index} className="active " aria-current="true" aria-label={`Slide ${index+1}`}></button>
+                            <div className="" key = {"carouselExampleIndicators"+index} >
+                                <button type="button " 
+                                    className = 'btn rounded-3 active d-flex justify-content-center pt-1'
+                                    data-bs-target="#carouselExampleIndicators" 
+                                    data-bs-slide-to={index}  
+                                    aria-current="true" 
+                                    aria-label={`Slide ${index+1}`}
+                                    style={{height:"30px", width:"30px",textIndent:"0px", borderRadius:'10px'}}
+                                >
+                                    <span className="text-dark" >{index}</span>
+                                </button>
+                            </div>
                         ) 
 
                     })
