@@ -27,6 +27,26 @@ const Page = () =>{
     },250)
   }
 
+
+  const animateBack = async(i) =>{
+    goBack()
+
+    await setTimeout(() => {
+      // alert(step-i)
+      if (i > 0){
+        animateBack(i-1)
+      }
+    }, 400);
+  }
+
+  const goToTop = async() =>{
+
+    const currentStep = step
+
+    animateBack(currentStep)
+    
+  }
+
   const goBack = () => {
     reverse()
     setStep(p=>{return (p!==0?p-1:p)})
@@ -57,7 +77,7 @@ const Page = () =>{
   return (
     <div className="d-flex h-100 text-center text-bg-dark flex-column overflow-hidden">
       
-      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)}  opposite when={step === 0} collapse>
+      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)}  opposite when={step === 0 } collapse>
         <div className="cover-container py-0 d-flex w-100 h-100 p-3 mx-auto flex-column " style={{minHeight:"100vh"}}>
             <div>
               <h3 className="float-md-start mb-0 pt-4"><Link className="nav-link fw-bold active" href=''>J-Apps</Link></h3>
@@ -102,22 +122,28 @@ const Page = () =>{
         </div>
       </Fade>
 
-      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 3} collapse>
+      <Fade bottom opposite when={step === 3} collapse>
 
         <div className="bg-light" style={{minHeight:"100vh"}}>
-          <ContactContent mainPage/>
+          <ContactContent
+            backButton = {<button onClick={goToTop} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white mt-3">Back to top</button>}
+          />
+          
+
           {/* <button onClick={scrollToContactRef} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">Learn more</button> */}
         </div>
       </Fade>
+
+      
       <div className="position-absolute w-100 py-2"
         onMouseEnter={()=>setShowBackButton(true)}
         onMouseLeave={()=>setShowBackButton(false)}
 
       >
-        <Fade top when = {showBackButton && step !== 0} collapse>
+        <Fade top opposite when = {showBackButton && step !== 0} collapse>
           <button 
             className="mx-auto btn btn-dark"
-            onClick={goBack}  
+            onClick={goToTop}  
           >
             Go Back
           </button>

@@ -1,8 +1,8 @@
 import Link from "next/link"
 
-const ContactContent = () =>{
+const ContactContent = (props) =>{
     return(
-        <div className="d-block  text-dark pt-4" >
+        <div className="d-block  text-dark pt-2" >
             <h1 className="text-center text-capitalize my-4">Contact Me</h1>
             
             <p className="text-center ">Fill out this form to send a message directly to my inbox</p>
@@ -28,7 +28,7 @@ const ContactContent = () =>{
                 
                     <div className="mb-3">
                         <label className="form-label">Message</label>
-                        <textarea className="form-control" id="message" type="text" placeholder="I have a question about..." style={{height: "10rem"}} data-sb-validations="required"></textarea>
+                        <textarea className="form-control" id="message" type="text" placeholder="I have a question about..." style={{height: "6rem"}} data-sb-validations="required"></textarea>
                         <div className="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
                     </div>
 
@@ -52,7 +52,7 @@ const ContactContent = () =>{
             </div>
 
             
-           
+            {props.backButton && props.backButton}
 
            
         </div>
