@@ -17,9 +17,18 @@ const Page = () =>{
   // const contactRef = useRef()
 
   const [step, setStep] = useState(0)
+  const [backwards, setBackwards] = useState(false)
   const [showBackButton, setShowBackButton] = useState(false)
 
+  const reverse = async() =>{
+    setBackwards(true)
+    setTimeout(()=>{
+      setBackwards(false)
+    },250)
+  }
+
   const goBack = () => {
+    reverse()
     setStep(p=>{return (p!==0?p-1:p)})
   }
 
@@ -48,7 +57,7 @@ const Page = () =>{
   return (
     <div className="d-flex h-100 text-center text-bg-dark flex-column overflow-hidden">
       
-      <Fade bottom opposite when={step === 0} collapse>
+      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)}  opposite when={step === 0} collapse>
         <div className="cover-container py-0 d-flex w-100 h-100 p-3 mx-auto flex-column " style={{minHeight:"100vh"}}>
             <div>
               <h3 className="float-md-start mb-0 pt-4"><Link className="nav-link fw-bold active" href=''>J-Apps</Link></h3>
@@ -74,7 +83,7 @@ const Page = () =>{
           <Footer small/>
         </div>
       </Fade>
-      <Fade bottom opposite when={step === 1} collapse>
+      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 1} collapse>
         <div className="mb-5 bg-light" style={{minHeight:"100vh"}}>
         
 
@@ -84,7 +93,7 @@ const Page = () =>{
         </div>
       </Fade>
 
-      <Fade bottom opposite when={step === 2} collapse>
+      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 2} collapse>
         <div className="mb-5 bg-secondary" style={{minHeight:"100vh"}}>
           <ResumeCarousel 
             nextButton = {<button onClick={()=>setStep(3)} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">Learn more</button>}
@@ -93,7 +102,7 @@ const Page = () =>{
         </div>
       </Fade>
 
-      <Fade bottom opposite when={step === 3} collapse>
+      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 3} collapse>
 
         <div className="bg-light" style={{minHeight:"100vh"}}>
           <ContactContent mainPage/>
