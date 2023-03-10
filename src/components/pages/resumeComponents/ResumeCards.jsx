@@ -11,13 +11,13 @@ const ResumeCarousel = (props) =>{
                     ResumeCards.map((el,index)=>{
                         return(
                             <div className="" key = {"carouselExampleIndicators"+index} >
-                                <button type="button " 
-                                    className = 'btn rounded-3 active d-flex justify-content-center pt-1'
+                                <button  
+                                    className = 'd-flex btn btn-light rounded-3 active justify-content-center pt-1 '
                                     data-bs-target="#carouselExampleIndicators" 
                                     data-bs-slide-to={index}  
                                     aria-current="true" 
                                     aria-label={`Slide ${index+1}`}
-                                    style={{height:"30px", width:"30px",textIndent:"0px", borderRadius:'10px'}}
+                                    style={{height:"30px", width:"30px",textIndent:"0px", borderRadius:'10px !important'}}
                                 >
                                     <span className="text-dark" >{index}</span>
                                 </button>
