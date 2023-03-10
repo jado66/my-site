@@ -28,23 +28,11 @@ const Page = () =>{
   }
 
 
-  const animateBack = async(i) =>{
-    goBack()
-
-    await setTimeout(() => {
-      // alert(step-i)
-      if (i > 0){
-        animateBack(i-1)
-      }
-    }, 400);
-  }
+ 
 
   const goToTop = async() =>{
-
-    const currentStep = step
-
-    animateBack(currentStep)
-    
+    reverse()
+    setStep(0)
   }
 
   const goBack = () => {
@@ -122,7 +110,7 @@ const Page = () =>{
         </div>
       </Fade>
 
-      <Fade bottom opposite when={step === 3} collapse>
+      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 3} collapse>
 
         <div className="bg-light" style={{minHeight:"100vh"}}>
           <ContactContent
@@ -143,7 +131,7 @@ const Page = () =>{
         <Fade top opposite when = {showBackButton && step !== 0} collapse>
           <button 
             className="mx-auto btn btn-dark"
-            onClick={goToTop}  
+            onClick={goBack}  
           >
             Go Back
           </button>
