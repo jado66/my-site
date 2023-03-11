@@ -8,7 +8,7 @@ import DemosContent from "@/components/pages/DemosContent"
 import ResumeContent from "@/components/pages/ResumeContent"
 import ContactContent from "@/components/pages/ContactContent"
 import ResumeCarousel from "@/components/pages/resumeComponents/ResumeCards"
-import { Fade } from "react-reveal"
+// import { Fade } from "react-reveal"
 
 const Page = () =>{
 
