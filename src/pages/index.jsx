@@ -65,7 +65,7 @@ const Page = () =>{
   return (
     <div className="d-flex h-100 text-center text-bg-dark flex-column overflow-hidden">
       
-      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)}  opposite when={step === 0 } collapse>
+      {/* <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)}  opposite when={step === 0 } collapse> */}
         <div className="cover-container py-0 d-flex w-100 h-100 p-3 mx-auto flex-column " style={{minHeight:"100vh"}}>
             <div>
               <h3 className="float-md-start mb-0 pt-4"><Link className="nav-link fw-bold active" href=''>J-Apps</Link></h3>
@@ -90,8 +90,8 @@ const Page = () =>{
         
           <Footer small/>
         </div>
-      </Fade>
-      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 1} collapse>
+      {/* </Fade> */}
+      {/* <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 1} collapse> */}
         <div className="mb-5 bg-light" style={{minHeight:"100vh"}}>
         
 
@@ -99,18 +99,18 @@ const Page = () =>{
           <button onClick={()=>setStep(2)} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">What Is Next</button>
           
         </div>
-      </Fade>
+      {/* </Fade> */}
 
-      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 2} collapse>
+      {/* <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 2} collapse> */}
         <div className="mb-5 bg-secondary" style={{minHeight:"100vh"}}>
           <ResumeCarousel 
             nextButton = {<button onClick={()=>setStep(3)} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">Learn more</button>}
           />
           
         </div>
-      </Fade>
+      {/* </Fade> */}
 
-      <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 3} collapse>
+      {/* <Fade bottom = {(backwards?false:true)} top = {(backwards?true:false)} opposite when={step === 3} collapse> */}
 
         <div className="bg-light" style={{minHeight:"100vh"}}>
           <ContactContent
@@ -120,7 +120,7 @@ const Page = () =>{
 
           {/* <button onClick={scrollToContactRef} className="btn btn-lg btn-secondary text-dark fw-bold border-dark bg-white">Learn more</button> */}
         </div>
-      </Fade>
+      {/* </Fade> */}
 
       
       <div className="position-absolute w-100 py-2"
@@ -128,14 +128,14 @@ const Page = () =>{
         onMouseLeave={()=>setShowBackButton(false)}
 
       >
-        <Fade top opposite when = {showBackButton && step !== 0} collapse>
+        {/* <Fade top opposite when = {showBackButton && step !== 0} collapse> */}
           <button 
             className="mx-auto btn btn-dark"
             onClick={goBack}  
           >
             Go Back
           </button>
-        </Fade>
+        {/* </Fade> */}
         
         
       </div>

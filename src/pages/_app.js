@@ -1,7 +1,8 @@
 import '@/styles/globals.css'
 import { createContext, useEffect, useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
-
+import { ToastContainer } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
 export const SiteContext = createContext()
  
 
@@ -22,6 +23,7 @@ export default function App({ Component, pageProps }) {
         setUserEnters:setUserEnters
       }}
     >
+      <ToastContainer/>
       <Component {...pageProps} />
     </SiteContext.Provider>
     )
