@@ -1,13 +1,21 @@
 import { useState } from "react"
 import { toast } from "react-toastify"
+
+
+const API_ENDPOINT = process.env.NODE_ENV === 'production'
+  ? 'https://www.japps.dev/api/call'
+  : 'http://localhost:3000/api/call';
+
 const Calling = () =>{
 
     const [toNumber, setToNumber] = useState('+18012548871')
     const [message, setMessage] = useState('Hello this is your application.')
 
+
+
     const makeCall = async() => {
         try {
-            let response = await fetch(`http://localhost:3000/api/call`, {
+            let response = await fetch(API_ENDPOINT, {
                 method: "POST",
                 body: JSON.stringify({
                     toNumber: toNumber,
