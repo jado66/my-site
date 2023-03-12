@@ -2,12 +2,19 @@ const SINCH_NUMBER = '+12064743847';
 
 export default async function handler(req, res) {
 
+    if (!req.body) {
+        throw new Error("Request body is empty");
+      }
+
     const query = JSON.parse(req.body)
+
+
+
 
     const TO_NUMBER = query.toNumber
     const Text = query.message
     
-    // console.log(JSON.stringify(query))
+    console.log(JSON.stringify(query))
     // console.log("TO_NUMBER: "+TO_NUMBER)
     // console.log("Text: "+Text)
 

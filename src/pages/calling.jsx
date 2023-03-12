@@ -6,19 +6,21 @@ const Calling = () =>{
     const [message, setMessage] = useState('Hello this is your application.')
 
     const makeCall = async() => {
-
-        let response = await fetch(`http://localhost:3000/api/call`, {
-            method: "POST",
-            body: JSON.stringify({
-                toNumber: toNumber,
-                message: message
-            }),
-        });
-        response = await response.json();
-        response.success?toast.success(response.msg):toast.error(response.msg)
-        
-        
+        try {
+            let response = await fetch(`http://localhost:3000/api/call`, {
+                method: "POST",
+                body: JSON.stringify({
+                    toNumber: toNumber,
+                    message: message
+                }),
+            });
+            response = await response.json();
+            response.success?toast.success(response.msg):toast.error(response.msg)
+        } catch (error) {
+            console.log(error);
+        }
     }
+    
 
     return (
         <div className="d-flex w-100 flex-column h-100 align-content-center bg-secondary container pt-5">
