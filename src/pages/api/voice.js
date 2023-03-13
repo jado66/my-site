@@ -9,6 +9,17 @@ const openai = new OpenAIApi(new Configuration({
   engine: 'text-davinci-003' // Specify the engine name
 }));
 
+let numberOfThings = 0
+
+const responses = [
+  'You just told me ',
+  'You said ',
+  'I can do this all day. Again you said ',
+  'Please stop, this hurts. You told me ',
+  'Just kidding, I am a robot. You said ',
+  'Just kidding again, I really am tired of this game. You said '
+]
+
 export default async function handler(req, res) {
   // if (req.method === 'POST') {
     // Use the Twilio Node.js SDK to build an XML response
@@ -24,7 +35,12 @@ export default async function handler(req, res) {
         timeout: 5,
         speechTimeout: 'auto'
       });
-      gather.say({ voice: 'alice' }, "You just told me "+req.body.SpeechResult+". Try telling me something else")
+
+      numberOfThings++
+
+      const aliceResponse = responses[numberOfThings%6]
+
+      gather.say({ voice: 'alice' }, aliceResponse+req.body.SpeechResult+". Try telling me something else")
       // await openai.createCompletion({
       //   prompt: req.body.SpeechResult,
       //   maxTokens: 3000, // Specify the maximum number of tokens to generate
@@ -64,7 +80,7 @@ export default async function handler(req, res) {
     });
 
     // Say a prompt to the caller
-    gather.say({ voice: 'alice' }, 'Try asking me a question.');
+    gather.say({ voice: 'alice' }, 'Try telling me a something.');
 
     // Render the response as XML in reply to the webhook request
     res.setHeader('Content-Type', 'text/xml');
