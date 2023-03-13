@@ -12,32 +12,37 @@ const openai = new OpenAIApi(new Configuration({
 export default async function handler(req, res) {
   // if (req.method === 'POST') {
     // Use the Twilio Node.js SDK to build an XML response
-   const twiml = new VoiceResponse();
+  const twiml = new VoiceResponse();
 
   // Check if there is a speech result from the caller
   if (req.body.SpeechResult) {
     // Send a request to the text-davinci-003 model with the speech result as the prompt
 
     try{
-      twiml.say({ voice: 'alice' }, "I'm thinking of a response for "+req.body.SpeechResult)
-      await openai.createCompletion({
-        prompt: req.body.SpeechResult,
-        maxTokens: 3000, // Specify the maximum number of tokens to generate
-        temperature: 0.5, // Specify the randomness of the generation
-        stop: '\n' // Specify a stop sequence to end the generation
-      })
-        // Get the generated text from the result object
-      const text = result.data.choices[0].text;
-        // Output the generated text to the caller
-  
       const gather = twiml.gather({
         input: 'speech',
         timeout: 5,
         speechTimeout: 'auto'
       });
+      gather.say({ voice: 'alice' }, "You just told me "+req.body.SpeechResult+". Try telling me something else")
+      // await openai.createCompletion({
+      //   prompt: req.body.SpeechResult,
+      //   maxTokens: 3000, // Specify the maximum number of tokens to generate
+      //   temperature: 0.5, // Specify the randomness of the generation
+      //   stop: '\n' // Specify a stop sequence to end the generation
+      // })
+      //   // Get the generated text from the result object
+      // const text = result.data.choices[0].text;
+      //   // Output the generated text to the caller
+  
+      // const gather = twiml.gather({
+      //   input: 'speech',
+      //   timeout: 5,
+      //   speechTimeout: 'auto'
+      // });
   
   
-      gather.say({ voice: 'alice' }, text);
+      // gather.say({ voice: 'alice' }, req.body.SpeechResult);
       // Render the response as XML in reply to the webhook request
       res.setHeader('Content-Type', 'text/xml');
       res.status(200).send(twiml.toString());
