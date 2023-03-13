@@ -17,31 +17,39 @@ export default function handler(req, res) {
   // Check if there is a speech result from the caller
   if (req.body.SpeechResult) {
     // Send a request to the text-davinci-003 model with the speech result as the prompt
-    openai.createCompletion({
-      prompt: req.body.SpeechResult,
-      maxTokens: 3000, // Specify the maximum number of tokens to generate
-      temperature: 0.5, // Specify the randomness of the generation
-      stop: '\n' // Specify a stop sequence to end the generation
-    }).then(result => {
-      // Get the generated text from the result object
-      const text = result.data.choices[0].text;
-      // Output the generated text to the caller
 
+    try{
+      twiml.say({ voice: 'alice' }, "I'm thinking of a response for "+req.body.SpeechResult)
+      await openai.createCompletion({
+        prompt: req.body.SpeechResult,
+        maxTokens: 3000, // Specify the maximum number of tokens to generate
+        temperature: 0.5, // Specify the randomness of the generation
+        stop: '\n' // Specify a stop sequence to end the generation
+      })
+        // Get the generated text from the result object
+      const text = result.data.choices[0].text;
+        // Output the generated text to the caller
+  
       const gather = twiml.gather({
         input: 'speech',
         timeout: 5,
         speechTimeout: 'auto'
       });
-
-
+  
+  
       gather.say({ voice: 'alice' }, text);
       // Render the response as XML in reply to the webhook request
       res.setHeader('Content-Type', 'text/xml');
       res.status(200).send(twiml.toString());
-    }).catch(error => {
-      // Handle any errors from the OpenAI API
+    }
+    catch{
       console.error(error);
-    });
+      twiml.say({ voice: 'alice' }, error);
+
+      res.status(200).send(twiml.toString());
+    }
+    
+  
   } else {
     // Gather speech input from the caller
     const gather = twiml.gather({
@@ -51,7 +59,7 @@ export default function handler(req, res) {
     });
 
     // Say a prompt to the caller
-    gather.say({ voice: 'alice' }, 'Please say something and I will try to respond using OpenAI.');
+    gather.say({ voice: 'alice' }, 'Try asking me a question.');
 
     // Render the response as XML in reply to the webhook request
     res.setHeader('Content-Type', 'text/xml');
