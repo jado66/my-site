@@ -26,7 +26,15 @@ export default function handler(req, res) {
       // Get the generated text from the result object
       const text = result.data.choices[0].text;
       // Output the generated text to the caller
-      twiml.say({ voice: 'alice' }, text);
+
+      const gather = twiml.gather({
+        input: 'speech',
+        timeout: 5,
+        speechTimeout: 'auto'
+      });
+
+
+      gather.say({ voice: 'alice' }, text);
       // Render the response as XML in reply to the webhook request
       res.setHeader('Content-Type', 'text/xml');
       res.status(200).send(twiml.toString());
