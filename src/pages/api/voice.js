@@ -9,7 +9,7 @@ const openai = new OpenAIApi(new Configuration({
   engine: 'text-davinci-003' // Specify the engine name
 }));
 
-export default function handler(req, res) {
+export default async function handler(req, res) {
   // if (req.method === 'POST') {
     // Use the Twilio Node.js SDK to build an XML response
    const twiml = new VoiceResponse();
