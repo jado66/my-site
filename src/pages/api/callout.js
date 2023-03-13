@@ -18,23 +18,22 @@ export default async function handler(req, res) {
     // console.log("TO_NUMBER: "+TO_NUMBER)
     // console.log("Text: "+Text)
 
+
     const ttsBody = {
-        instructions: [
-            {
-              name: 'sendDtmf',
-              value: '1234#'
-            }
-          ],
-          action: {
-            name: 'park',
-            introPrompt: '#tts[Welcome]',
-            holdPrompt: '#tts[Please wait, you are on hold]',
-            maxDuration: 180
-          }
+        method: 'ttsCallout',
+        ttsCallout: {
+          cli: SINCH_NUMBER,
+          destination: {
+            type: 'number',
+            endpoint: TO_NUMBER
+          },
+          voiceID: 'Raveena',
+          prompts: `#tts[${Text}]`,
+        }
       };
 
     var requestOptions = {
-        method: 'PATCH',
+        method: 'POST',
         headers: { 
             "Content-Type": "application/json", 
             "Authorization": process.env.SINCH_AUTH
@@ -44,7 +43,7 @@ export default async function handler(req, res) {
       };
 
     try {
-        await fetch(`https://calling.api.sinch.com/calling/v1/calls/id/${callid}`, requestOptions)
+        await fetch("https://calling.api.sinch.com/calling/v1/callouts", requestOptions)
             .then(response => response.json())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
