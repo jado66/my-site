@@ -1,4 +1,6 @@
-import { VoiceResponse } from 'twilio/lib/twiml/VoiceResponse';
+import { twiml } from 'twilio';
+const VoiceResponse = twiml.VoiceResponse;
+
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
