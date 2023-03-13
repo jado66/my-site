@@ -9,26 +9,30 @@ const openai = new OpenAIApi(new Configuration({
   engine: 'text-davinci-003' // Specify the engine name
 }));
 
+let numberOfThings = 0
+
+const responses = [
+  'You just told me ',
+  'You said ',
+  'I can do this all day. Again you said ',
+  'Please stop, this hurts. You told me ',
+  'Just kidding, I am a robot. You said ',
+  'Just kidding again, I really am tired of this game. You said '
+]
+
 export default async function handler(req, res) {
-  
+ 
   const twiml = new MessagingResponse();
 
   if (req.body.Body) {
 
     try{
-      
-      await openai.createCompletion({
-        prompt: req.body.Body,
-        maxTokens: 3000, // Specify the maximum number of tokens to generate
-        temperature: 0.5, // Specify the randomness of the generation
-        stop: '\n' // Specify a stop sequence to end the generation
-      })
-        // Get the generated text from the result object
-      const text = result.data.choices[0].text;
-        // Output the generated text to the user
+      numberOfThings++
+
+      const aliceResponse = responses[numberOfThings%6]
+
+      twiml.message(aliceResponse+req.body.Body+". Try telling me something else")
   
-      twiml.message(text);
-      // Render the response as XML in reply to the webhook request
       res.setHeader('Content-Type', 'text/xml');
       res.status(200).send(twiml.toString());
     }
@@ -41,7 +45,7 @@ export default async function handler(req, res) {
     
   
   } else {
-    // Say a prompt to the user
+    // Send a prompt to the user
     twiml.message('Try telling me something.');
 
     // Render the response as XML in reply to the webhook request
