@@ -1,5 +1,5 @@
 import { twiml } from 'twilio';
-import { Configuration, OpenAIApi } from 'openai';
+// import { Configuration, OpenAIApi } from 'openai';
 
 const VoiceResponse = twiml.VoiceResponse;
 
