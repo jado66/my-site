@@ -2,12 +2,12 @@ import Link from "next/link"
 
 const ContactContent = (props) =>{
     return(
-        <div className="d-block  text-dark pt-2" >
+        <div className="d-block  px-3 text-dark pt-2" >
             <h1 className="text-center text-capitalize my-4">Contact Me</h1>
             
-            <p className="text-center ">Fill out this form to send a message directly to my inbox</p>
 
             <div className="container p-4 border rounded-4 text-start">
+            <p className="text-center ">Fill out this form to send a message directly to my inbox</p>
 
                 <form id="contactForm">
 
