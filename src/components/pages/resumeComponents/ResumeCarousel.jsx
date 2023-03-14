@@ -30,20 +30,7 @@ const ResumeCarousel = (props) =>{
           },700)
     } 
 
-    const reverse = async() =>{
-        setBackwards(true)
-
-        setTimeout(()=>{
-            setShow(true)
-
-            setBackwards(false)
-        },250)
-      }
-
     return(
-
-    
-
 
     <div className="h-100 col-lg-10 col-12 mx-auto pb-lg-5 pb-1 position-relative"  style={{minHeight:"100vh"}}>
             <h1 className="text-center text-capitalize py-4 text-light">Resume</h1>
