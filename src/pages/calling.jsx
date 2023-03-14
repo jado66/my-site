@@ -19,7 +19,7 @@ const Calling = () =>{
     const [code, setCode] = useState("")
     const [showModal, setShowModal] = useState(false)
 
-    const debug = true
+    const debug = process.env.NODE_ENV !== 'production'
 
     const triggerOTP = async() =>{
 
