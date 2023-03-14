@@ -20,6 +20,13 @@ const DemosContent = (props) =>{
             </Link>
 
             <Link 
+                className="btn btn-danger col-lg-6 col-12 mx-lg-auto border py-4 d-flex rounded-4 border-dark text-decoration-none mb-3" 
+                href='/calling'
+            >
+                <span className="text-center fs-3 flex-grow-1 fw-bold ">Voice and SMS Apps</span>
+            </Link>
+
+            <Link 
                 className="btn btn-success col-lg-6 col-12 mx-lg-auto border py-4 d-flex rounded-4 border-dark text-decoration-none mb-3" 
                 href='https://worksite.vercel.app/tech-demos'
             >

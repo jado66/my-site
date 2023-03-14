@@ -115,7 +115,7 @@ export default async function handler(req, res) {
     });
 
     // Say a prompt to the caller
-    gather.say({ voice: 'alice' }, 'Try telling me a something.');
+    gather.say({ voice: 'Polly.Kimberly' }, 'Try telling me a something.');
 
     // Render the response as XML in reply to the webhook request
     res.setHeader('Content-Type', 'text/xml');
