@@ -7,14 +7,10 @@ import HoverLink from "@/components/HoverLink"
 import DemosContent from "@/components/pages/DemosContent"
 import ResumeContent from "@/components/pages/ResumeContent"
 import ContactContent from "@/components/pages/ContactContent"
-import ResumeCarousel from "@/components/pages/resumeComponents/ResumeCards"
+import ResumeCarousel from "@/components/pages/resumeComponents/ResumeCarousel"
 import { Fade } from "react-reveal"
 
 const Page = () =>{
-
-  // const demoRef = useRef()
-  // const resumeRef = useRef()
-  // const contactRef = useRef()
 
   const [step, setStep] = useState(0)
   const [backwards, setBackwards] = useState(false)
@@ -26,9 +22,6 @@ const Page = () =>{
       setBackwards(false)
     },250)
   }
-
-
- 
 
   const goToTop = async() =>{
     reverse()
@@ -42,10 +35,6 @@ const Page = () =>{
 
   const router = useRouter()
   const { userEnters, setUserEnters } = useContext(SiteContext)
-
-  // const scrollToDemoRef = () => {demoRef.current.scrollIntoView(); setHide(false) }
-  // const scrollToResumeRef = () => resumeRef.current.scrollIntoView()    
-  // const scrollToContactRef = () => contactRef.current.scrollIntoView() 
 
   useEffect(()=>{
 

@@ -1,4 +1,4 @@
-import ResumeCards from "./resumeComponents/ResumeCarousel";
+import ResumeCards from "./resumeComponents/ResumeCards";
 
 const ResumeContent = (props) =>{
     
