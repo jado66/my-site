@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         code:code
     }))
 
-    Send a verification code to the user's phone number
+    // Send a verification code to the user's phone number
     try {
         const verificationCheck = await verify.v2.services(process.env.SID).verificationChecks.create({
             to: toNumber,
