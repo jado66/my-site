@@ -32,12 +32,12 @@ const ResumeCarousel = (props) =>{
 
     return(
 
-    <div className="h-100 col-lg-10 col-12 mx-auto pb-lg-5 pb-1 position-relative"  style={{minHeight:"100vh"}}>
+    <div className="h-100 mx-auto pb-lg-5 pb-1 position-relative"  style={{minHeight:"100vh"}}>
             <h1 className="text-center text-capitalize py-4 text-light">Resume</h1>
                 
            
             
-            <div className="flex-row h-100 align-items-center text-dark fs-6" style={{minHeight:'300px'}}>
+            <div className="flex-row h-100 align-items-center text-dark fs-6 col-lg-10 col-12 mx-auto" style={{minHeight:'300px'}}>
                 {
                    ResumeCards.map((el,index)=>{
                     return(
@@ -51,8 +51,8 @@ const ResumeCarousel = (props) =>{
                 }
             </div>
 
-            <div className="mt-3 position-fixed w-100" style={{bottom:"20%"}}>
-                <div className="mb-4">
+            <div className="mt-3 position-fixed w-100 text-center" style={{bottom:"20%"}}>
+                <div className="mb-4 ">
                     <button className="btn btn-light btn-outline-dark" type="button" onClick={goBack}>
                         Back
                     </button>

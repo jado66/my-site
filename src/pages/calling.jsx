@@ -74,7 +74,7 @@ const Calling = () =>{
     }
 
     return (
-        <div className="d-flex w-100 flex-column h-100 align-content-center bg-secondary pt-5">
+        <div className="d-flex w-100 flex-column h-100 align-content-center bg-secondary pt-5 ">
             
             <div className={`modal fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog">
                 <div className="modal-dialog" role="document">
@@ -103,76 +103,78 @@ const Calling = () =>{
 
             {showModal && <div className="modal-backdrop fade show"></div>}
 
+            <div className="col-lg-8 col-12 mx-auto px-3">
+                <div className="p-5 d-flex flex-column border mx-5 rounded-3 bg-light  mx-3">
+                    <h2 className="text-center ">Call Yourself</h2>
+                    <hr className=" mt-4"/>
 
-            <div className="p-5 d-flex flex-column border mx-5 rounded-3 bg-light">
-                <h2 className="text-center ">Call Yourself</h2>
-                <hr className=" mt-4"/>
-
-                {/* <div className="mb-3">
-                    <label className="form-label">Voice</label>
-                    <select className="form-control" value={voice} onChange = {(e)=>setVoice(e.target.value)}>
-                        <optgroup label = "English (Australian)">
-                            <option value = "Polly.Nicole">Nicole</option>
-                            <option value = "Polly.Russell">Russell</option>
-                            <option value = "Polly.Olivia-Neural">Olivia-Neural</option>
-                        </optgroup>
-                        <optgroup label = "English (British)">
-                            <option value = "Polly.Amy">Amy</option>
-                            <option value = "Polly.Brian">Brian</option>
-                            <option value = "Polly.Emma">Emma</option>
-                            <option value = "Polly.Amy-Neural">Amy-Neural</option>
-                            <option value = "Polly.Emma-Neural">Emma-Neural</option>
-                            <option value = "Polly.Brian-Neural">Brian-Neural</option>
-                            <option value = "Polly.Arthur-Neural">Arthur-Neural</option>
-                        </optgroup>
-                            <optgroup label = "English (Indian)">
-                            <option value = "Polly.Aditi">Aditi	</option>
-                            <option value = "Polly.Raveena">Raveena</option>
-                            <option value = "Polly.Kajal-Neural">Kajal-Neural</option>
-                        </optgroup>
-                        <optgroup label = "English (New Zealand)">
-                            <option value = "Polly.Aria-Neural">Aria-Neural</option>
-                        </optgroup>
-                        <optgroup label = "English (US)">
-                            <option value = "Polly.Ivy">Ivy</option>
-                            <option value = "Polly.Joanna">Joanna</option>
-                            <option value = "Polly.Joey">Joey</option>
-                            <option value = "Polly.Justin">Justin</option>
-                            <option value = "Polly.Kendra">Kendra</option>
-                            <option value = "Polly.Kimberly">Kimberly</option>
-                            <option value = "Polly.Matthew">Matthew</option>
-                            <option value = "Polly.Salli">Salli</option>
-                            <option value = "Polly.Ivy-Neural">Ivy-Neural</option>
-                            <option value = "Polly.Joanna-Neural">Joanna-Neural</option>
-                            <option value = "Polly.Kendra-Neural">Kendra-Neural</option>
-                            <option value = "Polly.Kevin-Neural">Kevin-Neural (child)</option>
-                            <option value = "Polly.Kimberly-Neural">Kimberly-Neural</option>
-                            <option value = "Polly.Salli-Neural">Salli-Neural</option>
-                            <option value = "Polly.Joey-Neural">Joey-Neural</option>
-                            <option value = "Polly.Justin-Neural">Justin-Neural</option>
-                            <option value = "Polly.Matthew-Neural*">Matthew-Neural</option>
-                        </optgroup>
-                        <optgroup label = "English (South African)">
-                            <option value = "Polly.Ayanda-Neural">Ayanda-Neural</option>
-                        </optgroup>
-                        <optgroup label = "English (Welsh)">
-                            <option value = "Polly.Geraint">Geraint</option>
-                        </optgroup>
-                    </select>
-                </div> */}
+                    {/* <div className="mb-3">
+                        <label className="form-label">Voice</label>
+                        <select className="form-control" value={voice} onChange = {(e)=>setVoice(e.target.value)}>
+                            <optgroup label = "English (Australian)">
+                                <option value = "Polly.Nicole">Nicole</option>
+                                <option value = "Polly.Russell">Russell</option>
+                                <option value = "Polly.Olivia-Neural">Olivia-Neural</option>
+                            </optgroup>
+                            <optgroup label = "English (British)">
+                                <option value = "Polly.Amy">Amy</option>
+                                <option value = "Polly.Brian">Brian</option>
+                                <option value = "Polly.Emma">Emma</option>
+                                <option value = "Polly.Amy-Neural">Amy-Neural</option>
+                                <option value = "Polly.Emma-Neural">Emma-Neural</option>
+                                <option value = "Polly.Brian-Neural">Brian-Neural</option>
+                                <option value = "Polly.Arthur-Neural">Arthur-Neural</option>
+                            </optgroup>
+                                <optgroup label = "English (Indian)">
+                                <option value = "Polly.Aditi">Aditi	</option>
+                                <option value = "Polly.Raveena">Raveena</option>
+                                <option value = "Polly.Kajal-Neural">Kajal-Neural</option>
+                            </optgroup>
+                            <optgroup label = "English (New Zealand)">
+                                <option value = "Polly.Aria-Neural">Aria-Neural</option>
+                            </optgroup>
+                            <optgroup label = "English (US)">
+                                <option value = "Polly.Ivy">Ivy</option>
+                                <option value = "Polly.Joanna">Joanna</option>
+                                <option value = "Polly.Joey">Joey</option>
+                                <option value = "Polly.Justin">Justin</option>
+                                <option value = "Polly.Kendra">Kendra</option>
+                                <option value = "Polly.Kimberly">Kimberly</option>
+                                <option value = "Polly.Matthew">Matthew</option>
+                                <option value = "Polly.Salli">Salli</option>
+                                <option value = "Polly.Ivy-Neural">Ivy-Neural</option>
+                                <option value = "Polly.Joanna-Neural">Joanna-Neural</option>
+                                <option value = "Polly.Kendra-Neural">Kendra-Neural</option>
+                                <option value = "Polly.Kevin-Neural">Kevin-Neural (child)</option>
+                                <option value = "Polly.Kimberly-Neural">Kimberly-Neural</option>
+                                <option value = "Polly.Salli-Neural">Salli-Neural</option>
+                                <option value = "Polly.Joey-Neural">Joey-Neural</option>
+                                <option value = "Polly.Justin-Neural">Justin-Neural</option>
+                                <option value = "Polly.Matthew-Neural*">Matthew-Neural</option>
+                            </optgroup>
+                            <optgroup label = "English (South African)">
+                                <option value = "Polly.Ayanda-Neural">Ayanda-Neural</option>
+                            </optgroup>
+                            <optgroup label = "English (Welsh)">
+                                <option value = "Polly.Geraint">Geraint</option>
+                            </optgroup>
+                        </select>
+                    </div> */}
 
 
-                <div className="mb-3">
-                    <label className="form-label">Phone Number</label>
-                    <input type="text" className="form-control" value={toNumber} onChange = {(e)=>setToNumber(e.target.value)}/>
+                    <div className="mb-3">
+                        <label className="form-label">Phone Number</label>
+                        <input type="text" className="form-control" value={toNumber} onChange = {(e)=>setToNumber(e.target.value)}/>
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Message</label>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={e => setMessage(e.target.value)} value = {message} />
+                    </div>
+                    <button className="btn btn-primary mx-auto btn-lg px-5" onClick={triggerOTP}>Start Call</button>
+
                 </div>
-                <div className="mb-3">
-                    <label className="form-label">Message</label>
-                    <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" onChange={e => setMessage(e.target.value)} value = {message} />
-                </div>
-                <button className="btn btn-primary mx-auto btn-lg px-5" onClick={triggerOTP}>Start Call</button>
-
             </div>
+            
 
            
             
