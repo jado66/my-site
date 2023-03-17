@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
     try {
         const response = new VoiceResponse();
-        response.say({voice: "Polly.Kimberly",language:"en-US"},message);
+        response.say({voice: "Polly.Kimberly",language:"en-US",speechRate: '1.5'},message);
     
         client.calls
           .create({
