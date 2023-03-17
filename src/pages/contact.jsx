@@ -10,14 +10,16 @@ const Contact = () =>{
   const router = useRouter()
 
   return (
-        <div className="d-flex w-100 flex-column">
-            <Navbar/>
-            <ContactContent/>
-            <Footer/>
-            <UnderConstrunctionBanner/>
-
-
+    <div className="d-flex w-100 flex-column mx-auto">
+      
+        <Navbar/>
+        <div className = "col-lg-8 col-12 mx-auto">
+          <ContactContent/>
+          <Footer/>
         </div>
+        <UnderConstrunctionBanner/>
+      
+    </div>
   )
 }
 
