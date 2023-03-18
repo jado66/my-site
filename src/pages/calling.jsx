@@ -23,11 +23,11 @@ const Calling = () =>{
 
     
     return (
-        <div className="d-flex w-100 flex-column h-100 align-content-center bg-secondary pt-2 ">
+        <div className="d-flex w-100 flex-column h-100 align-content-center bg-secondary pt-3 ">
             
            
             <div className="col-lg-8 col-12 mx-auto px-3">
-                <div className="p-4 d-flex flex-column border mx-5 rounded-3 bg-light  mx-3">
+                <div className="p-4 d-flex flex-column border mx-lg-5 rounded-3 bg-light  mx-0">
                 <div className="text-center">
                     {/* <h2>Call Yourself</h2> */}
                         <div className="btn-group" role="group">
