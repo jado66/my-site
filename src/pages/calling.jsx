@@ -227,7 +227,7 @@ const SMSApp = () => {
             <div className = "px-4 text-center">
 
                 <Link href = "sms: +1-888-598-7351" className = "mx-auto ">
-                    <button className="btn btn-primary mx-auto btn-lg px-5">Text +1-888-598-7351</button>
+                    <button className="btn btn-primary mx-auto btn-lg px-5 fs-6">Text +1-888-598-7351</button>
                 </Link>
             </div>
 
@@ -351,7 +351,7 @@ const VoiceApp = () => {
             <div className = "px-4 text-center">
 
                 <Link href = "tel: +1-888-598-7351" className = "mx-auto ">
-                    <button className="btn btn-primary mx-auto btn-lg px-5">Call +1-888-598-7351</button>
+                    <button className="btn btn-primary mx-auto btn-lg px-5 fs-6">Call +1-888-598-7351</button>
                 </Link>
             </div>
 
