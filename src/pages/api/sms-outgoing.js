@@ -12,7 +12,6 @@ export default async function handler(req, res) {
     console.log(JSON.stringify({
         toNumber:toNumber,
         message:message,
-        voice:voice,
         code:code
     }))
 
