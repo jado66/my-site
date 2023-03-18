@@ -7,6 +7,10 @@ const CALL_ENDPOINT = process.env.NODE_ENV === 'production'
   ? 'https://www.japps.dev/api/voice-outgoing'
   : 'http://localhost:3000/api/voice-outgoing';
 
+const SMS_ENDPOINT = process.env.NODE_ENV === 'production'
+  ? 'https://www.japps.dev/api/sms-outgoing'
+  : 'http://localhost:3000/api/sms-outgoing';
+
 const OTP_ENDPOINT = process.env.NODE_ENV === 'production'
   ? 'https://www.japps.dev/api/text-otp'
   : 'http://localhost:3000/api/text-otp';
@@ -123,7 +127,7 @@ const SMSApp = () => {
     const triggerOTP = async() =>{
 
         if (debug){
-            makeCall()
+            sendText()
             return
         }
 
@@ -147,15 +151,14 @@ const SMSApp = () => {
         }
     }
 
-    const makeCall = async() => {
+    const sendText = async() => {
         setShowModal(false)
         try {
-            let response = await fetch(CALL_ENDPOINT, {
+            let response = await fetch(SMS_ENDPOINT, {
                 method: "POST",
                 body: JSON.stringify({
                     toNumber: toNumber,
                     message: message,
-                    voice:voice,
                     code:code
                 }),
             });
@@ -192,7 +195,7 @@ const SMSApp = () => {
                             <button type="button" className="btn btn-secondary" onClick={handleClose}>
                                 Close
                             </button>
-                            <button type="button" className="btn btn-primary" onClick={makeCall}>
+                            <button type="button" className="btn btn-primary" onClick={sendText}>
                                 Submit
                             </button>
                         </div>
