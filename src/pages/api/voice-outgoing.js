@@ -39,7 +39,7 @@ export default async function handler(req, res) {
 
     try {
         const response = new VoiceResponse();
-        response.say({voice: "Polly.Kimberly",language:"en-US",speechRate: '1.5'},message);
+        response.say({voice: "Polly.Kimberly",language:"en-US",speechRate: '1.5'},"This is a message from the Voice technical demo of the J-Apss website. You can call this number back for more demos. Here is the message: "+message);
     
         client.calls
           .create({

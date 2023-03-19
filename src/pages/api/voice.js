@@ -93,7 +93,7 @@ export default async function handler(req, res) {
 
       const aliceResponse = responses[Math.floor(Math.random()*responses.length-1)]
       const prompt = prompts[Math.floor(Math.random()*prompts.length-1)] 
-      gather.say({ voice: voices[Math.floor(Math.random()*voices.length-1)]  }, aliceResponse+req.body.SpeechResult+". "+prompt)
+      gather.say({voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5'  }, aliceResponse+req.body.SpeechResult+". "+prompt)
   
       res.setHeader('Content-Type', 'text/xml');
       res.status(200).send(twiml.toString());
@@ -115,7 +115,7 @@ export default async function handler(req, res) {
     });
 
     // Say a prompt to the caller
-    gather.say({ voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5' }, 'Try telling me a something.');
+    gather.say({ voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5' }, 'Welcome to J-Apps Virtaul Assistant. This is the Voice Application demo. During this demo I will repeat back to you whatever you say to me. Try telling me something.');
 
     // Render the response as XML in reply to the webhook request
     res.setHeader('Content-Type', 'text/xml');
