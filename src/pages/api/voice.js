@@ -82,7 +82,7 @@ export default async function handler(req, res) {
  
   const twiml = new VoiceResponse();
 
-  if (req.body.SpeechResult) {
+  if (req.body.SpeechResult) { // speach to text from user
 
     try{
       const gather = twiml.gather({
@@ -93,6 +93,12 @@ export default async function handler(req, res) {
 
       const aliceResponse = responses[Math.floor(Math.random()*responses.length-1)]
       const prompt = prompts[Math.floor(Math.random()*prompts.length-1)] 
+
+      // Chatbot response
+
+      // const response = await chatGPT(req.body.SpeechResult) repsonse other flask
+      // gather.say({voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5'  }, chatBotResponse))
+
       gather.say({voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5'  }, aliceResponse+req.body.SpeechResult+". "+prompt)
   
       res.setHeader('Content-Type', 'text/xml');
@@ -115,7 +121,7 @@ export default async function handler(req, res) {
     });
 
     // Say a prompt to the caller
-    gather.say({ voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5' }, 'Welcome to J-Apps Virtaul Assistant. This is the Voice Application demo. During this demo I will repeat back to you whatever you say to me. Try telling me something.');
+    gather.say({ voice: 'Polly.Kimberly',language:"en-US",speechRate: '1.5' }, 'Welcome to J-Apps Virtual Assistant. This is the Voice Application demo. During this demo I will repeat back to you whatever you say to me. Try telling me something.');
 
     // Render the response as XML in reply to the webhook request
     res.setHeader('Content-Type', 'text/xml');
