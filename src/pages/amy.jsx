@@ -20,7 +20,7 @@ const Amy = () => {
         <Head>
             <title>AMY - AutoMate Your </title>
         </Head>
-        <div className='container pb-5'>
+        <div className='container pb-5 col-lg-8 col-12'>
             
             <Card className = 'd-flex flex-column mb-3 text-center mt-5 p-5'>
                 <h1 >Introducing Your Personal AI Assistant - AMY </h1>
@@ -32,7 +32,7 @@ const Amy = () => {
             
             <Card className = 'd-flex flex-row mb-3'>
                 <div className='col-3  my-auto'>
-                    <img src = 'amy.png' className = 'img-fluid ps-5' alt = 'chatbot'/>
+                    <img src = 'Amy.png' className = 'img-fluid ps-5' alt = 'chatbot'/>
                 </div>
                 <div className='col-9 p-5'>
                     <h2 className = "text-center mt-4 mb-5 ">Introducing AMY - Your Personal AI Assistant</h2>
