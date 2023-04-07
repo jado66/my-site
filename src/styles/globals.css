@@ -1,3 +1,11 @@
+:root {
+  --amy-1: #9381FF;
+  --amy-2: #B8B8FF;
+  --amy-3: #FFEEDD;
+  --amy-4: #FFD8BE;
+  --amy-light:#F8F7FF;
+}
+
 html,
 body,
 #__next{
@@ -24,3 +32,27 @@ body,
 
 .box-shadow{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;}
+
+.bg-amy-1 {
+  background-color: var(--amy-1) !important;
+}
+.bg-amy-2 {
+  background-color: var(--amy-2) !important;
+}
+.bg-amy-3 {
+  background-color: var(--amy-3) !important;
+}
+.bg-amy-4 {
+  background-color: var(--amy-4) !important;
+}
+.bg-amy-light {
+  background-color: var(--amy-light) !important;
+}
+
+.text-amy-light {
+  color: var(--amy-light) !important;
+}
+
+.text-amy-1 {
+  color: var(--amy-1) !important;
+}
