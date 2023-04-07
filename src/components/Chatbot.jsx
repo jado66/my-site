@@ -8,20 +8,44 @@ const Chatbot = () => {
 
     const [isMinimized, setIsMinimized] = useState(true);
     const [isAmyTyping, setIsAmyTyping] = useState(false);
-    const lastIdRef = useRef(0);
     const inputRef = useRef();
+
     const [msgInputValue, setMsgInputValue] = useState("");
+
     const [messages, setMessages] = useState([]);
+
+    const triggerResponse = async() => {
+        const response = await fetch("https://api.chucknorris.io/jokes/random");
+        const data = await response.json();
+        handleRecieve(data.value);
+        setIsAmyTyping(false)
+    }
 
     const handleSend = message => {
         setIsAmyTyping(true);
-        setMessages([...messages, {
+        setMessages(prevstate=>[...prevstate, {
           message,
           direction: 'outgoing'
         }]);
         setMsgInputValue("");
         inputRef.current.focus();
+
+        setTimeout(() => {
+            triggerResponse();
+        }, 1000);
+        
       };
+
+    const handleRecieve = message => {
+        setIsAmyTyping(false);
+        setMessages(prevstate=>[...prevstate,  {
+            message,
+            direction: 'incoming'
+        }]);
+        setMsgInputValue("");
+        inputRef.current.focus();
+    };
+    
     
 
     const handleChatbotMessage = (e) => {
@@ -35,7 +59,7 @@ const Chatbot = () => {
     if (isMinimized) {
         return (
         <div>
-            <button className="btn" onClick={() => setIsMinimized(false)} style = {{width: '150px', height: '150px'}} >
+            <button className="btn" onClick={() => setIsMinimized(false)} style = {{maxWidth: '150px', height: '150px'}} >
                 <img 
                     src='AmyAvatar.png' 
                     className='img-fluid ps-lg-5 mx-lg-0 mx-auto my-auto' 
@@ -65,9 +89,10 @@ const Chatbot = () => {
                         <Avatar src={'AmyAvatar.png'} name={"Amy"} />
                     </Message>
                     {messages.map(m => <Message key={m.id} model={m} />)}
-                    {isAmyTyping&&<TypingIndicator content="Amy is typing" />}
                 </MessageList>
-                <MessageInput placeholder="Type message here" onSend={m => handleSend(m)} onChange={setMsgInputValue} value={msgInputValue} ref={inputRef} />
+                {/* {isAmyTyping&&<TypingIndicator content="Amy is typing" />} */}
+
+                {/* <MessageInput placeholder="Type message here" onSend={m => handleSend(m)} onChange={setMsgInputValue} value={msgInputValue} ref={inputRef} /> */}
                     <div as={MessageInput} style={{
                         display: "flex",
                         flexDirection: "row",
@@ -77,7 +102,8 @@ const Chatbot = () => {
                             flexGrow: 1,
                             borderTop: 0,
                             flexShrink: "initial"
-                            }} />                                
+                            }} />  
+                                                        
                         <SendButton onClick={() => handleSend(msgInputValue)} disabled={msgInputValue.length === 0} style={{
                             fontSize: "1.2em",
                             marginLeft: 0,
@@ -95,6 +121,7 @@ const Chatbot = () => {
                             paddingRight: "0.2em"
                             }} /> 
                     </div>
+                   
                         
                 </ChatContainer>
             </MainContainer>
