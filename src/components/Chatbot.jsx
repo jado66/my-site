@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 // Import components from chat-ui-kit-react
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, MessageSeparator, Avatar, SendButton, AttachmentButton, InfoButton, MessageGroup, CustomMessage } from "@chatscope/chat-ui-kit-react";
+import { X } from "react-bootstrap-icons";
 
 const Chatbot = () => {
 
@@ -73,11 +74,13 @@ const Chatbot = () => {
 
 
     return (
-        <div className = "box-shadow  me-4 mt-4" onBlur={()=>setIsMinimized(false)} 
-            style = {{minWidth:"300px", height:"450px"}}
+        <div className = "box-shadow  me-4 mt-4 position-relative" onBlur={()=>setIsMinimized(false)} 
+            style = {{width:"300px", height:"450px"}}
         >
+            
             <MainContainer >
                 <ChatContainer  >
+                    
                 <MessageList scrollBehavior="smooth" >
                 <Message model={{
                     message: "Hello and welcome to J-Apps. What can I help you with?",
@@ -86,11 +89,12 @@ const Chatbot = () => {
                     direction: "incoming",
                     position: "single"
                 }}>
-                        <Avatar src={'AmyAvatar.png'} name={"Amy"} />
+                        {/* <Avatar src={'AmyAvatar.png'} name={"Amy"} /> */}
                     </Message>
                     {messages.map(m => <Message key={m.id} model={m} />)}
+                    {isAmyTyping&&<TypingIndicator content="Amy is typing" className = "position-relative"/>}
                 </MessageList>
-                {/* {isAmyTyping&&<TypingIndicator content="Amy is typing" />} */}
+                
 
                 {/* <MessageInput placeholder="Type message here" onSend={m => handleSend(m)} onChange={setMsgInputValue} value={msgInputValue} ref={inputRef} /> */}
                     <div as={MessageInput} style={{
@@ -125,6 +129,13 @@ const Chatbot = () => {
                         
                 </ChatContainer>
             </MainContainer>
+            <button 
+                className="position-absolute top-0 end-0 cs-button" 
+                style={{zIndex:9}}
+                onClick={() => setIsMinimized(true)}
+            >
+                <X/>
+            </button>
         </div>
     );
 }
