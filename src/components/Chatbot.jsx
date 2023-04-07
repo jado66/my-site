@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 // Import styles from chat-ui-kit-styles
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 // Import components from chat-ui-kit-react
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, MessageSeparator, Avatar, localSender, SendButton, AttachmentButton, InfoButton, MessageGroup, CustomMessage } from "@chatscope/chat-ui-kit-react";
+import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, MessageSeparator, Avatar, SendButton, AttachmentButton, InfoButton, MessageGroup, CustomMessage } from "@chatscope/chat-ui-kit-react";
 
 const Chatbot = () => {
 
@@ -67,7 +67,7 @@ const Chatbot = () => {
                     {messages.map(m => <Message key={m.id} model={m} />)}
                     {isAmyTyping&&<TypingIndicator content="Amy is typing" />}
                 </MessageList>
-                <MessageInput placeholder="Type message here" onSend={m => handleSend(m, localSender)} onChange={setMsgInputValue} value={msgInputValue} ref={inputRef} />
+                <MessageInput placeholder="Type message here" onSend={m => handleSend(m)} onChange={setMsgInputValue} value={msgInputValue} ref={inputRef} />
                     <div as={MessageInput} style={{
                         display: "flex",
                         flexDirection: "row",
@@ -78,7 +78,7 @@ const Chatbot = () => {
                             borderTop: 0,
                             flexShrink: "initial"
                             }} />                                
-                        <SendButton onClick={() => handleSend(msgInputValue, localSender)} disabled={msgInputValue.length === 0} style={{
+                        <SendButton onClick={() => handleSend(msgInputValue)} disabled={msgInputValue.length === 0} style={{
                             fontSize: "1.2em",
                             marginLeft: 0,
                             paddingLeft: "0.2em",
