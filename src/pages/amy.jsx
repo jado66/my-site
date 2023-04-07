@@ -30,11 +30,11 @@ const Amy = () => {
             </Card>
            
             
-            <Card className = 'd-flex flex-row mb-3'>
-                <div className='col-3  my-auto'>
-                    <img src = 'Amy.png' className = 'img-fluid ps-5' alt = 'chatbot'/>
+            <Card className = 'd-flex flex-lg-row flex-col mb-3'>
+                <div className='col-lg-3 col-12 my-auto w-100 d-flex mt-lg-0 mt-5'>
+                    <img src = 'Amy.png' className = 'img-fluid ps-lg-5 mx-lg-0 mx-auto' alt = 'chatbot'/>
                 </div>
-                <div className='col-9 p-5'>
+                <div className='col-lg-9 col-12 p-5'>
                     <h2 className = "text-center mt-4 mb-5 ">Introducing AMY - Your Personal AI Assistant</h2>
                     <p className='fs-5'>With AMY, you can optimize your business operations by automating customer service tasks with human-like responses. AMY is highly customized and learns from your unique data, delivering exceptional service with perfect precision.</p>
                 </div>  
