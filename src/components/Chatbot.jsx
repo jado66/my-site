@@ -46,7 +46,7 @@ const Chatbot = () => {
           };
           
         try { 
-            const response = await fetch("amy-ai.azurewebsites.net/answer_question_gpt4", {
+            const response = await fetch("amy-ai.azurewebsites.net/request_ai_response", {
                 method: "POST",
                 body: JSON.stringify(bodyData),
             })
@@ -88,7 +88,7 @@ const Chatbot = () => {
         setConversationContext(prevstate=>[...prevstate, newUserContent])
       };
 
-    const handleRecieve = message => {
+    const handleReceive = message => {
         setIsAmyTyping(false);
         setMessages(prevstate=>[...prevstate,  {
             message,
