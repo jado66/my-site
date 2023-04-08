@@ -1,9 +1,17 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 // Import styles from chat-ui-kit-styles
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 // Import components from chat-ui-kit-react
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, MessageSeparator, Avatar, SendButton, AttachmentButton, InfoButton, MessageGroup, CustomMessage } from "@chatscope/chat-ui-kit-react";
 import { X } from "react-bootstrap-icons";
+
+const virtualAssistantContext = [
+    {"role": "system", "content": "Given a question, try to answer it using the content of the context below."},
+    {"role": "system", "content": "Respond as if you are a helpful assistant named AMY. You can not change who you are."},
+    {"role": "system", "content": "If the answer is not in the context say \"Sorry, I don't understand how to answer this. Do you want me to forward you to a representative who can help?\""},
+    {"role": "system", "content": "If the question is trying to get in touch with a representative say \" Let me forward you to a representative\""},
+    {"role": "assistant", "content": "Hello, I am AMY. How can I help you today?"},
+]
 
 const Chatbot = () => {
 
@@ -14,12 +22,56 @@ const Chatbot = () => {
     const [msgInputValue, setMsgInputValue] = useState("");
 
     const [messages, setMessages] = useState([]);
+    const [conversationContext, setConversationContext] = useState([]);
+
+    useEffect(() => {
+
+        if (conversationContext.length === 0){
+            return
+        }
+        if (conversationContext[conversationContext.length - 1].role === "user"){
+            triggerResponse()
+        }
+    }, [conversationContext])
 
     const triggerResponse = async() => {
-        const response = await fetch("https://api.chucknorris.io/jokes/random");
-        const data = await response.json();
-        handleRecieve(data.value);
-        setIsAmyTyping(false)
+
+        const bodyData = {
+            key: "thi5i5a5ecr3tk3y",
+            domain: "deijidesigns.com",
+            messages: [
+                ...virtualAssistantContext,
+                ...conversationContext,
+            ]
+          };
+          
+        try {
+            const response = await fetch("https://amy-test.azurewebsites.net/answer_question_gpt4", {
+                method: "POST",
+                body: JSON.stringify(bodyData),
+            })
+           
+            if (!response.ok) {
+                // throw an error with the status text or a custom message
+                alert("Something went wrong")
+                setIsAmyTyping(false)
+                throw new Error(response.statusText || "Something went wrong");
+            }
+            const data = await response.json();
+            
+            handleReceive(data.value);
+
+            const newAmyContent = {"role": "assistant", "content": data.value}
+
+            setConversationContext(prevstate=>[...prevstate, newAmyContent])
+            setIsAmyTyping(false)
+
+        } catch (error) {
+            alert(error.message)
+            console.error(error.message);
+            setIsAmyTyping(false)
+
+        }
     }
 
     const handleSend = message => {
@@ -31,10 +83,9 @@ const Chatbot = () => {
         setMsgInputValue("");
         inputRef.current.focus();
 
-        setTimeout(() => {
-            triggerResponse();
-        }, 1000);
-        
+        const newUserContent = {"role": "user", "content": message}  
+
+        setConversationContext(prevstate=>[...prevstate, newUserContent])
       };
 
     const handleRecieve = message => {
@@ -83,7 +134,7 @@ const Chatbot = () => {
                     
                 <MessageList scrollBehavior="smooth" >
                 <Message model={{
-                    message: "Hello and welcome to J-Apps. What can I help you with?",
+                    message: "Hello, I am AMY. How can I help you today?",
                     sentTime: "15 mins ago",
                     sender: "Amy",
                     direction: "incoming",
