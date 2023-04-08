@@ -23,6 +23,7 @@ const Chatbot = () => {
 
     const [messages, setMessages] = useState([]);
     const [conversationContext, setConversationContext] = useState([]);
+    const [domain, setDomain] = useState("deijidesigns.com");
 
     useEffect(() => {
 
@@ -38,7 +39,7 @@ const Chatbot = () => {
 
         const bodyData = {
             key: "thi5i5a5ecr3tk3y",
-            domain: "deijidesigns.com",
+            domain: domain,
             messages: [
                 ...virtualAssistantContext,
                 ...conversationContext,
@@ -125,10 +126,30 @@ const Chatbot = () => {
 
 
     return (
-        <div className = "box-shadow  me-4 mt-4 position-relative" onBlur={()=>setIsMinimized(false)} 
+        <div className = "box-shadow  me-4 mt-4 d-flex flex-column" onBlur={()=>setIsMinimized(false)} 
             style = {{width:"300px", height:"450px"}}
         >
+            <div className="flex-row d-flex ">
+                <select 
+                    value={domain}
+                    onChange={(e) => setDomain(e.target.value)}
+                    className="form-select form-select-sm border-0 p-3" 
+                    aria-label=".form-select-sm example" 
+                    >
+                    <option value="deijidesigns.com" selected>Deiji Design</option>
+                    <option value="quantumcomputing">Quantum Computing</option>
+                    <option value="georgiatech">Georgia tech</option>
+                </select>
+                <button 
+                    className="cs-button" 
+                    style={{zIndex:9}}
+                    onClick={() => setIsMinimized(true)}
+                >
+                    <X/>
+                </button>
+            </div>
             
+            <div className="position-relative flex-grow-1">
             <MainContainer >
                 <ChatContainer  >
                     
@@ -180,13 +201,9 @@ const Chatbot = () => {
                         
                 </ChatContainer>
             </MainContainer>
-            <button 
-                className="position-absolute top-0 end-0 cs-button" 
-                style={{zIndex:9}}
-                onClick={() => setIsMinimized(true)}
-            >
-                <X/>
-            </button>
+            </div>
+           
+            
         </div>
     );
 }
