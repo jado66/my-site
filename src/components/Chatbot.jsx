@@ -45,8 +45,8 @@ const Chatbot = () => {
             ]
           };
           
-        try {
-            const response = await fetch("https://amy-test.azurewebsites.net/answer_question_gpt4", {
+        try { 
+            const response = await fetch("amy-ai.azurewebsites.net/answer_question_gpt4", {
                 method: "POST",
                 body: JSON.stringify(bodyData),
             })
