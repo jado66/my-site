@@ -17,6 +17,7 @@ export default function App({ Component, pageProps }) {
 
   },[])
   return (
+
     <SiteContext.Provider value =
       {{
         userEnters: userEnters,

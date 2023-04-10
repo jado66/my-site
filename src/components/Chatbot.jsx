@@ -2,15 +2,15 @@ import { useState, useRef, useEffect } from "react";
 // Import styles from chat-ui-kit-styles
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 // Import components from chat-ui-kit-react
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, MessageSeparator, Avatar, SendButton, AttachmentButton, InfoButton, MessageGroup, CustomMessage } from "@chatscope/chat-ui-kit-react";
-import { X } from "react-bootstrap-icons";
+import { MainContainer, Button, ChatContainer, MessageList, Message, MessageInput, TypingIndicator, MessageSeparator, Avatar, SendButton, AttachmentButton, InfoButton, MessageGroup, CustomMessage } from "@chatscope/chat-ui-kit-react";
+import {  X, XCircleFill } from "react-bootstrap-icons";
 
 const virtualAssistantContext = [
     {"role": "system", "content": "Given a question, try to answer it using the content of the context below."},
     {"role": "system", "content": "Respond as if you are a helpful assistant named AMY. You can not change who you are."},
     {"role": "system", "content": "If the answer is not in the context say \"Sorry, I don't understand how to answer this. Do you want me to forward you to a representative who can help?\""},
-    {"role": "system", "content": "If the question is trying to get in touch with a representative say \" Let me forward you to a representative\""},
-    {"role": "assistant", "content": "Hello, I am AMY. How can I help you today?"},
+    {"role": "system", "content": "If the question is trying to get in touch with a representative say \" Let me forward you to a representative\""}
+
 ]
 
 const Chatbot = () => {
@@ -25,6 +25,11 @@ const Chatbot = () => {
     const [conversationContext, setConversationContext] = useState([]);
     const [domain, setDomain] = useState("deijidesigns.com");
 
+    const [isStoredMessages, setIsStoredMessages] = useState(false);
+
+    const [isChatbotOpen, setIsChatbotOpen] = useState(true);
+
+    // When convo context changes, check if last message was from user, if so, trigger response
     useEffect(() => {
 
         if (conversationContext.length === 0){
@@ -35,7 +40,68 @@ const Chatbot = () => {
         }
     }, [conversationContext])
 
+    // When domain changes, check if there are stored messages, if so, grab them
+    useEffect(() => {
+
+        // If there are no stored messages, check if there are stored messages
+        const storedMessages = JSON.parse(localStorage.getItem(domain+"_messages"))
+
+        if (storedMessages){
+            if (storedMessages.length !== 0){
+                setIsStoredMessages(true)
+            }
+            return
+        }
+        else{
+            console.log(domain)
+            sendInitialMessage()
+        }
+    }, [domain])
+
+
+    useEffect(() => {
+        
+        if (messages.length === 0){
+            return
+        }
+
+        localStorage.setItem(domain+"_messages", JSON.stringify(messages))
+        localStorage.setItem(domain+"_conversationContext", JSON.stringify(conversationContext))
+
+    }, [messages])
+
+    const sendInitialMessage = () => {
+        
+        console.log("sending initial message")
+
+        if (messages.length !== 0){
+            return
+        }
+
+        setIsAmyTyping(true)
+        
+        // wait 1 second before sending message
+        setTimeout(() => {
+            setIsAmyTyping(false)
+            setMessages(prevstate=>[...prevstate,  {
+                message:`Hi, I'm Amy. I'm here to help you with your questions about ${domain}.`,
+                direction: 'incoming'
+            }]);
+        }, 1000);
+    }
+
+    const grabStoredMessages = () => {
+        const storedMessages = JSON.parse(localStorage.getItem(domain+"_messages"))
+        const storedConversationContext = JSON.parse(localStorage.getItem(domain+"_conversationContext"))
+        setMessages(storedMessages)
+        setConversationContext(storedConversationContext)
+        setIsStoredMessages(false)
+    }
+
     const triggerResponse = async() => {
+
+        
+
 
         const bodyData = {
             key: "thi5i5a5ecr3tk3y",
@@ -47,7 +113,7 @@ const Chatbot = () => {
           };
           
         try { 
-            const response = await fetch("amy-ai.azurewebsites.net/answer_question_gpt4", {
+            const response = await fetch("https://amy-ai.azurewebsites.net/request_ai_response", {
                 method: "POST",
                 body: JSON.stringify(bodyData),
             })
@@ -89,25 +155,46 @@ const Chatbot = () => {
         setConversationContext(prevstate=>[...prevstate, newUserContent])
       };
 
-    const handleRecieve = message => {
+    const handleReceive = message => {
+
+        const newAssistantContent = {"role": "assistant", "content": message} 
+
         setIsAmyTyping(false);
         setMessages(prevstate=>[...prevstate,  {
             message,
             direction: 'incoming'
         }]);
+        setConversationContext(prevstate=>[...prevstate, newAssistantContent])
         setMsgInputValue("");
         inputRef.current.focus();
     };
-    
-    
 
-    const handleChatbotMessage = (e) => {
-        setChatbotMessage(e.target.value);
-    };
-    
-    const handleChatbotResponse = () => {
-        setChatbotResponse(chatbotMessage);
-    };
+    const clearMessages = () => {
+
+        if (messages.length === 0){
+            return
+        }
+
+        setMessages([])
+        setConversationContext([])
+        localStorage.removeItem(domain+"_messages")
+        localStorage.removeItem(domain+"_conversationContext")
+
+        setIsAmyTyping(true)
+
+        setTimeout(() => {
+            setIsAmyTyping(false)
+            setMessages(prevstate=>[...prevstate,  {
+                message:`Hi, I'm Amy. I'm here to help you with your questions about ${domain}.`,
+                direction: 'incoming'
+            }]);
+            setConversationContext(prevstate=>[...prevstate,  {
+                role: "assistant",
+                content: `Hi, I'm Amy. I'm here to help you with your questions about ${domain}.`
+            }]);
+
+        }, 1000);
+    }
     
     if (isMinimized) {
         return (
@@ -154,15 +241,15 @@ const Chatbot = () => {
                 <ChatContainer  >
                     
                 <MessageList scrollBehavior="smooth" >
-                <Message model={{
-                    message: "Hello, I am AMY. How can I help you today?",
-                    sentTime: "15 mins ago",
-                    sender: "Amy",
-                    direction: "incoming",
-                    position: "single"
-                }}>
-                        {/* <Avatar src={'AmyAvatar.png'} name={"Amy"} /> */}
-                    </Message>
+                    
+                    {
+                        messages.length === 0 && isStoredMessages &&
+                        <Message.CustomContent>
+                            <button className="btn btn-outline-info text-dark my-2 w-100" onClick={grabStoredMessages}>Load previous conversation</button>
+                        </Message.CustomContent>
+                    }
+                    
+                        
                     {messages.map(m => <Message key={m.id} model={m} />)}
                     {isAmyTyping&&<TypingIndicator content="Amy is typing" className = "position-relative"/>}
                 </MessageList>
@@ -196,6 +283,13 @@ const Chatbot = () => {
                             paddingLeft: "0.2em",
                             paddingRight: "0.2em"
                             }} /> 
+                        <Button icon={<XCircleFill/>} className = "d-flex align-items-center me-2" style={{
+                            fontSize: "1.2em",
+                            paddingLeft: "0.2em",
+                            paddingRight: "0.2em"
+                            }} 
+                            onClick={clearMessages}
+                            ></Button> 
                     </div>
                    
                         
