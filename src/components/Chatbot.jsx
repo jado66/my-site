@@ -155,10 +155,7 @@ const Chatbot = () => {
         setConversationContext(prevstate=>[...prevstate, newUserContent])
       };
 
-    const handleReceive = message => {
-
-        const newAssistantContent = {"role": "assistant", "content": message} 
-
+    const handleRecieve = message => {
         setIsAmyTyping(false);
         setMessages(prevstate=>[...prevstate,  {
             message,
