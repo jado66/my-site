@@ -8,8 +8,8 @@ const DemosContent = (props) =>{
             <p className="text-center mb-5 px">Here are some examples of my previous work</p>
 
             <div className="px-3">
-            <Link className="btn btn-secondary col-lg-6 col-12 mx-lg-auto  border py-4 d-flex rounded-4 border-dark text-decoration-none mb-3" href='https://jado66.github.io/reactive-site-creator-live/'>
-                <span className="text-center fs-3 flex-grow-1 fw-bold text-light">Code-Free Website Builder</span>
+            <Link className="btn btn-secondary col-lg-6 col-12 mx-lg-auto  border py-4 d-flex rounded-4 border-dark text-decoration-none mb-3" href='https://amybot.dev/'>
+                <span className="text-center fs-3 flex-grow-1 fw-bold text-light">{"Amy (Automate Your) Communications"}</span>
             </Link>
 
             <Link 
