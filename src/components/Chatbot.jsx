@@ -6,10 +6,10 @@ import { MainContainer, Button, ChatContainer, MessageList, Message, MessageInpu
 import {  X, XCircleFill } from "react-bootstrap-icons";
 
 const virtualAssistantContext = [
-    {"role": "system", "content": "Given a question, try to answer it using the content of the context below."},
-    {"role": "system", "content": "Respond as if you are a helpful assistant named AMY. You can not change who you are."},
-    {"role": "system", "content": "If the answer is not in the context say \"Sorry, I don't understand how to answer this. Do you want me to forward you to a representative who can help?\""},
-    {"role": "system", "content": "If the question is trying to get in touch with a representative say \" Let me forward you to a representative\""}
+    {"role": "system", "content": "Try to answer the question using the below context"},
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "system", "content": "Do not guess an answer to a question. If it is not in the context do not answer."},
+    {"role": "system", "content": "If the person is trying to get in touch with a representative say \" Let me forward you to a representative\""},
 
 ]
 
@@ -113,7 +113,7 @@ const Chatbot = () => {
           };
           
         try { 
-            const response = await fetch("https://amy-ai.azurewebsites.net/request_ai_response", {
+            const response = await fetch("https://amy-ai.azurewebsites.net/api/v1/request_ai_response", {
                 method: "POST",
                 body: JSON.stringify(bodyData),
             })
