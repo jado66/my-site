@@ -10,8 +10,8 @@ const Construction = () =>{
 
     const enterSite = () =>{
         setUserEnters(true)
-        localStorage.setItem("entered",true)
-        router.push('/')
+        // localStorage.setItem("entered",true)
+        window.location.href = "https://www.amybot.dev"
     }
 
     return (
