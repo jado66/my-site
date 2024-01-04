@@ -11,7 +11,7 @@ const Construction = () =>{
     const enterSite = () =>{
         setUserEnters(true)
         // localStorage.setItem("entered",true)
-        window.location.href = "https://www.amybot.dev"
+        window.location.href = "https://www.amy-communications.com/"
     }
 
     return (
